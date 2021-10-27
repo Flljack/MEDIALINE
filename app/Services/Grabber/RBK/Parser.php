@@ -2,16 +2,25 @@
 
 namespace App\Services\Grabber\RBK;
 
-use SimpleXMLElement;
+use App\Services\Grabber\ParserParent;
 
-class Parser
+
+
+class Parser extends ParserParent
 {
-    public function getData($content)
+
+    /**
+     * @param string $content
+     * @return array
+     * @throws \ErrorException
+     */
+    public function getNewsUrls(string $content): array
     {
-        $feed = (array) new SimpleXmlElement($content);
-        //dd(array_keys((array)$feed['channel']));
-        $channel = (array)$feed['channel'];//(array)$channel['channel']
-        $items = $channel['item'];
-        dd($items);
+        $data = $this::getJsonContent($content);
+        $urls = [];
+        foreach ($data['items'] as $item) {
+            $urls[] = $this::getAElementsFromHTML($item['html'])[0]->getAttribute('href');
+        }
+        return $urls;
     }
 }

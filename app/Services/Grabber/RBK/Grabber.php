@@ -35,7 +35,7 @@ class Grabber
     public function grab()
     {
         $content = SpiderParent::getContent($this->url, self::HEADERS);
-        dd($content);
-        $this->parser->getData($content);
+        $newsUrl = $this->parser->getNewsUrls($content);
+        dd($newsUrl);
     }
 }
