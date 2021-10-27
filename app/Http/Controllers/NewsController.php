@@ -9,6 +9,6 @@ class NewsController extends Controller
 {
     public function index()
     {
-        return view('newsFeed', ['newsList' => News::orderBy('created_at')->simplePaginate(5)]);
+        return view('newsFeed', ['newsList' => News::orderBy('created_at', 'DESC')->simplePaginate(5)]);
     }
 }
