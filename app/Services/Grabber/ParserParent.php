@@ -30,6 +30,6 @@ class ParserParent
         $doc = new DOMDocument();
         $doc->loadHTML($html);
         $xpath = new DOMXpath($doc);
-        return iterator_to_array($xpath->query("//a[@href]"));
+        return iterator_to_array($xpath->query('//a[@href]'));
     }
 }
