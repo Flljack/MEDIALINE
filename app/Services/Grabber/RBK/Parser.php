@@ -15,7 +15,7 @@ class Parser extends ParserParent
     const TITLE_PATTERN = '//h1';
     const DATE_PATTERN = '//*[@itemprop="datePublished"]';
     const IMAGE_PATTERN = '//div[@itemprop="articleBody"]//img';
-    const DESCRIPTION_PATTERN = '//div[@itemprop="articleBody"]/*[not(contains(@class, "news-bar") or (contains(@class, "article__ticker")) or (contains(@class, "article__inline-item")) or (contains(@class, "banner")) or (contains(@class, "article__clear")) or (contains(@class, "article__social")) or @href  )]';
+    const DESCRIPTION_PATTERN = '(//div[@itemprop="articleBody"])[1]/*[not(contains(@class, "news-bar") or (contains(@class, "article__ticker")) or (contains(@class, "article__inline-item")) or (contains(@class, "banner")) or (contains(@class, "article__clear")) or (contains(@class, "article__social")) or @href  )]';
     const AUTHOR_PATTERN = '//*[@class="article__authors__author__name"]';
 
     /**
