@@ -9,13 +9,18 @@ class SpiderParent
 
     /**
      * @param string $url
+     * @param array|null $headers
      * @return string
      * @throws \ErrorException
      */
-    public static function getContent(string $url)
+    public static function getContent(string $url, array $headers = null)
     {
+        if (is_null($headers)) {
+            $headers = ['user-agent' => self::USER_AGENTS];
+        }
+
         try {
-            $response = Http::withHeaders(['user-agent' => self::USER_AGENTS])->get($url);
+            $response = Http::withHeaders($headers)->get($url);
         } catch (\Exception $exception) {
             echo $exception->getMessage();
             throw new \ErrorException('Http request failed');
