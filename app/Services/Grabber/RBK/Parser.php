@@ -84,6 +84,7 @@ class Parser extends ParserParent
         $data['author'] = $author;
         $data['description'] = $description;
         $data['date'] = $date;
+        $data['source'] = 'rbk.ru';
         $data['image'] = $image;
         return $data;
     }

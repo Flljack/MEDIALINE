@@ -2,6 +2,7 @@
 
 namespace App\Services\Grabber\RBK;
 
+use App\Models\News;
 use App\Services\Grabber\SpiderParent;
 
 class Grabber
@@ -39,6 +40,22 @@ class Grabber
         $newsUrls = $this->parser->getNewsUrls($content);
         $newsContent = SpiderParent::getContentFromUrls($newsUrls, self::SLEEP, self::HEADERS);
         $data = $this->parser->getNewsDataArray($newsContent);
-        dd($data);
+        $this->save($data);
+    }
+
+    private function save(array $data)
+    {
+        foreach ($data as $item)  {
+            $news = News::firstWhere('created_at', $item['date']);
+            if (!$news) {
+                News::create([
+                    'title' => $item['title'],
+                    'description' => $item['description'],
+                    'author' => $item['author'],
+                    'source' => $item['source'],
+                    'created_at' => $item['date']
+                ]);
+            }
+        }
     }
 }
