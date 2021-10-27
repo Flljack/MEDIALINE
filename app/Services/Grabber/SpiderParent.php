@@ -13,7 +13,7 @@ class SpiderParent
      * @return string
      * @throws \ErrorException
      */
-    public static function getContent(string $url, array $headers = null)
+    public static function getContent(string $url, array $headers = null): string
     {
         if (is_null($headers)) {
             $headers = ['user-agent' => self::USER_AGENTS];
@@ -26,5 +26,22 @@ class SpiderParent
             throw new \ErrorException('Http request failed');
         }
         return $response->body();
+    }
+
+    /**
+     * @param array $urls
+     * @param int $sleep
+     * @param array|null $headers
+     * @return array
+     * @throws \ErrorException
+     */
+    public static function getContentFromUrls(array $urls, int $sleep, array $headers = null): array
+    {
+        $urlsContent = [];
+        foreach ($urls as $url) {
+            $urlsContent[] = SpiderParent::getContent($url, $headers);
+            sleep($sleep);
+        }
+        return $urlsContent;
     }
 }

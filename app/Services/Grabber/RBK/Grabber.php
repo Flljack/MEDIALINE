@@ -10,6 +10,7 @@ class Grabber
     const LIMIT_URL_PART = '/limit/';
     const LIMIT = 15;
     const HEADERS = ['user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.54 Safari/537.36', 'accept' => 'application/json'];
+    const SLEEP = 1;
 
     /**
      * @var Parser
@@ -35,7 +36,8 @@ class Grabber
     public function grab()
     {
         $content = SpiderParent::getContent($this->url, self::HEADERS);
-        $newsUrl = $this->parser->getNewsUrls($content);
-        dd($newsUrl);
+        $newsUrls = $this->parser->getNewsUrls($content);
+        $newsContent = SpiderParent::getContentFromUrls($newsUrls, self::SLEEP, self::HEADERS);
+        dd($newsContent);
     }
 }

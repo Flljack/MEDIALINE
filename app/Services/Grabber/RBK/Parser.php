@@ -23,4 +23,9 @@ class Parser extends ParserParent
         }
         return $urls;
     }
+
+    public function getNewsData(array $newsContent): array
+    {
+        return [];
+    }
 }
