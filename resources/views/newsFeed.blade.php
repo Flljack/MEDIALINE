@@ -14,7 +14,7 @@
                 <h6>{{$news->author}}</h6>
                 <h2>{{$news->title}}</h2>
                 <p>{{ Str::limit($news->description, 200) }}</p>
-                <a class="card__show-more" href="#">подробнее</a>
+                <a class="card__show-more" href="{{route('news', $news->id)}}">подробнее</a>
 
             </div>
         </div>

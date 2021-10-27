@@ -24,6 +24,11 @@ body {
     overflow: hidden;
     width: 700px;
 }
+
+.card.full {
+    width: 1100px;
+}
+
 .card h2 {
     letter-spacing: 1px;
     margin: 10px 0;

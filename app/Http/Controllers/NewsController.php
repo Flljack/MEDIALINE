@@ -11,4 +11,9 @@ class NewsController extends Controller
     {
         return view('newsFeed', ['newsList' => News::orderBy('created_at', 'DESC')->simplePaginate(5)]);
     }
+
+    public function news($id)
+    {
+        return view('news', ['news' => News::firstWhere('id', $id)]);
+    }
 }
