@@ -3,6 +3,7 @@
 namespace App\Services\Grabber\RBK;
 
 use App\Services\Grabber\ParserParent;
+use Carbon\Carbon;
 use DOMDocument;
 use DOMXPath;
 
@@ -91,7 +92,7 @@ class Parser extends ParserParent
         $data['author'] = $author;
         $data['description'] = $description;
         $data['descriptionPreview'] = $descriptionPreview;
-        $data['date'] = $date;
+        $data['date'] = Carbon::createFromFormat('c', $date);
         $data['source'] = 'rbk.ru';
         $data['image'] = $image;
         return $data;
