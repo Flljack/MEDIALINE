@@ -81,6 +81,9 @@ class Parser extends ParserParent
         $descriptionNodeList = $xpath->query(self::DESCRIPTION_PATTERN);
         $description = '';
         foreach ($descriptionNodeList as $item) {
+            if (empty(trim($item->textContent))) {
+                continue;
+            }
             $pElement = $doc->createElement('p', $item->textContent);
             $description .= $doc->saveHTML($pElement);
         }

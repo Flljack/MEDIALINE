@@ -11,7 +11,7 @@
             </div>
             <h6>{{$news->author}}</h6>
             <h2>{{$news->title}}</h2>
-            <p>{!!$news->description !!}</p>
+            {!!$news->description !!}
 
         </div>
     </div>
