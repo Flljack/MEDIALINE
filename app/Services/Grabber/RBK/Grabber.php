@@ -57,6 +57,12 @@ class Grabber
                     'source' => $item['source'],
                     'created_at' => $item['date']
                 ]);
+            } else {
+                $news->tite = $item['title'];
+                $news->image = $item['image'];
+                $news->description = $item['description'];
+                $news->description_preview = $item['descriptionPreview'];
+                $news->save();
             }
         }
     }
