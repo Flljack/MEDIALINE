@@ -39,6 +39,10 @@ body {
     padding-bottom: 40px;
 }
 
+.card.full p {
+    padding-bottom: 0;
+}
+
 .card h6 {
     opacity: 0.6;
     margin: 0;
@@ -50,6 +54,15 @@ body {
     padding: 30px;
     position: relative;
     width: 100%;
+}
+
+.card img {
+    max-width: 100%;
+    margin-top: 15px;
+}
+
+.card span {
+    font-size: 18px;
 }
 
 .card__show-more {
