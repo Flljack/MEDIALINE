@@ -50,6 +50,7 @@ class Grabber
             if (!$news) {
                 News::create([
                     'title' => $item['title'],
+                    'image' => $item['image'],
                     'description' => $item['description'],
                     'description_preview' => $item['descriptionPreview'],
                     'author' => $item['author'],
