@@ -34,6 +34,9 @@ class Grabber
         $this->url = self::URL . $dateTimestamp . self::LIMIT_URL_PART . self::LIMIT;
     }
 
+    /**
+     * @throws \ErrorException
+     */
     public function grab()
     {
         $content = SpiderParent::getContent($this->url, self::HEADERS);
@@ -43,6 +46,9 @@ class Grabber
         $this->save($data);
     }
 
+    /**
+     * @param array $data
+     */
     private function save(array $data)
     {
         foreach ($data as $item)  {
