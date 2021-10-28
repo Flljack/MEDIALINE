@@ -51,6 +51,7 @@ class Grabber
                 News::create([
                     'title' => $item['title'],
                     'description' => $item['description'],
+                    'description_preview' => $item['descriptionPreview'],
                     'author' => $item['author'],
                     'source' => $item['source'],
                     'created_at' => $item['date']

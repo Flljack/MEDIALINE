@@ -13,7 +13,7 @@ class News extends Model
 
     protected $table = 'news';
 
-    protected $fillable = ['title', 'description', 'author', 'source', 'created_at'];
+    protected $fillable = ['title', 'description', 'description_preview', 'author', 'source', 'created_at'];
 
     public $timestamps = false;
 }
