@@ -73,7 +73,11 @@ class Parser extends ParserParent
         $title = $titleElement->textContent;
         $author = $authorElement->textContent;
         $date = $dateElement->getAttribute('content');
-        $descriptionPreview = $descriptionPreviewElement->textContent;
+        $descriptionPreview = null;
+        if (!is_null($descriptionPreviewElement)) {
+            $descriptionPreview = $descriptionPreviewElement->textContent;
+        }
+
         $image = null;
         if (!is_null($imageElement)) {
             $image = $imageElement->getAttribute('src');
@@ -85,6 +89,11 @@ class Parser extends ParserParent
             if (empty(trim($item->textContent))) {
                 continue;
             }
+            if (is_null($descriptionPreview)) {
+                $descriptionPreview = $item->textContent;
+                continue;
+            }
+
             $pElement = $doc->createElement('p', $item->textContent);
             $description .= $doc->saveHTML($pElement);
         }
