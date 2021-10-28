@@ -8,7 +8,7 @@
             <div class="card">
                 <div class="card-info">
                     <div class="card-date">
-                    <span>
+                    <span class="date">
                         {{\Carbon\Carbon::parse($news->created_at)->format('d/m/Y H:i')}}
                     </span>
                     </div>

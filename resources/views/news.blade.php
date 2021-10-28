@@ -11,7 +11,7 @@
             </div>
             <h6>{{$news->author}}</h6>
             <h2>{{$news->title}}</h2>
-            <span>{{$news->description_preview}}</span>
+            <span class="date">{{$news->description_preview}}</span>
             <img src="{{$news->image}}">
             {!!$news->description !!}
 

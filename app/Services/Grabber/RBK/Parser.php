@@ -18,7 +18,7 @@ class Parser extends ParserParent
     const IMAGE_PATTERN = '//div[@itemprop="articleBody"]//img';
     const DESCRIPTION_PREVIEW_PATTERN = '(//div[@itemprop="articleBody"])[1]/*[@class="article__text__overview"]'; // text
     const DESCRIPTION_PATTERN = '(//div[@itemprop="articleBody"])[1]/p[not(contains(@class, "news-bar") or (contains(@class, "article__ticker")) or (contains(@class, "article__inline-item")) or (contains(@class, "banner")) or (contains(@class, "article__clear")) or (contains(@class, "article__social")) or @href  )]';
-    const AUTHOR_PATTERN = '//*[@class="article__authors__author__name"]';
+    const AUTHOR_PATTERN = '//*[@class="article__authors__author__name" or @class="article__header__author"]';
 
     /**
      * @param string $content
@@ -67,11 +67,11 @@ class Parser extends ParserParent
         $imageElement = $xpath->query(self::IMAGE_PATTERN)->item(0);
         $authorElement = $xpath->query(self::AUTHOR_PATTERN)->item(0);
         $descriptionPreviewElement= $xpath->query(self::DESCRIPTION_PREVIEW_PATTERN)->item(0);
-        if (is_null($titleElement) || is_null($dateElement) || is_null($authorElement)) {
+        if (is_null($titleElement) || is_null($dateElement)) {
             return null;
         }
         $title = $titleElement->textContent;
-        $author = $authorElement->textContent;
+        $author = is_null($authorElement)? null: $authorElement->textContent;
         $date = $dateElement->getAttribute('content');
         $descriptionPreview = null;
         if (!is_null($descriptionPreviewElement)) {

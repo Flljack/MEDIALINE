@@ -19,7 +19,7 @@ class CreateNewsTable extends Migration
             $table->text('image')->nullable();
             $table->text('description');
             $table->text('description_preview');
-            $table->string('author', 100);
+            $table->string('author', 100)->nullable();
             $table->string('source');
             $table->timestamp('created_at');
             $table->unique('created_at');

@@ -43,7 +43,7 @@ body {
 
 .card h2 {
     letter-spacing: 1px;
-    margin: 10px 0;
+    margin: 15px 0;
 }
 
 .card p {
@@ -97,4 +97,8 @@ body {
     right: 30px;
     text-align: right;
     width: 150px;
+}
+
+span.date {
+    margin-bottom: 10px;
 }
